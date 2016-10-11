@@ -25,9 +25,13 @@ class JKTextStyle: NSObject {
     }
     
     class func feedContentStyle() -> [String: Any] {
+        // 设置行间距
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 6
         return [
             NSFontAttributeName: UIFont.systemFont(ofSize: 16),
-            NSForegroundColorAttributeName: RGB(r: 118, g: 120, b: 124)
+            NSForegroundColorAttributeName: RGB(r: 118, g: 120, b: 124),
+            NSParagraphStyleAttributeName: style
         ];
     }
 }

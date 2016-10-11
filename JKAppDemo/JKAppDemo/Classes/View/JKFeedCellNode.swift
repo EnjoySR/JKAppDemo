@@ -46,6 +46,7 @@ class JKFeedCellNode: ASCellNode {
         let topSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(20, 20, 10, 20), child: contentSpec)
 
         let spec = ASStackLayoutSpec(direction: ASStackLayoutDirection.vertical, spacing: 0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [topSpec, bottomNode]);
+        
         return ASBackgroundLayoutSpec(child: spec, background: bgNode)
     }
     
