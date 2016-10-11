@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		468603425011D3C043B3F2AB /* Pods_JKAppDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2E7AAD0C5D95D5CDB4D0C /* Pods_JKAppDemo.framework */; };
 		4FC6F2711DAC9B8700A2AF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC6F2701DAC9B8700A2AF31 /* AppDelegate.swift */; };
 		4FC6F2731DAC9B8700A2AF31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC6F2721DAC9B8700A2AF31 /* ViewController.swift */; };
 		4FC6F2761DAC9B8700A2AF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC6F2741DAC9B8700A2AF31 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A2D136EDDEE1D215C43373E /* Pods-JKAppDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKAppDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKAppDemo/Pods-JKAppDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4FC6F26D1DAC9B8700A2AF31 /* JKAppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKAppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC6F2701DAC9B8700A2AF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FC6F2721DAC9B8700A2AF31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		4FC6F2771DAC9B8700A2AF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FC6F27A1DAC9B8700A2AF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FC6F27C1DAC9B8700A2AF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FF2E7AAD0C5D95D5CDB4D0C /* Pods_JKAppDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKAppDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0078BFCB9849EB1CC526410 /* Pods-JKAppDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKAppDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKAppDemo/Pods-JKAppDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				468603425011D3C043B3F2AB /* Pods_JKAppDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				4FC6F26F1DAC9B8700A2AF31 /* JKAppDemo */,
 				4FC6F26E1DAC9B8700A2AF31 /* Products */,
+				E68F21623B2FB63176B7052E /* Pods */,
+				D310814D67B471F21B8586A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = JKAppDemo;
 			sourceTree = "<group>";
 		};
+		D310814D67B471F21B8586A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FF2E7AAD0C5D95D5CDB4D0C /* Pods_JKAppDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E68F21623B2FB63176B7052E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0078BFCB9849EB1CC526410 /* Pods-JKAppDemo.debug.xcconfig */,
+				3A2D136EDDEE1D215C43373E /* Pods-JKAppDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FC6F27F1DAC9B8700A2AF31 /* Build configuration list for PBXNativeTarget "JKAppDemo" */;
 			buildPhases = (
+				A5C6E358C10CE12832FC0259 /* [CP] Check Pods Manifest.lock */,
 				4FC6F2691DAC9B8700A2AF31 /* Sources */,
 				4FC6F26A1DAC9B8700A2AF31 /* Frameworks */,
 				4FC6F26B1DAC9B8700A2AF31 /* Resources */,
+				CFB904B8966DE2AEEB784A26 /* [CP] Embed Pods Frameworks */,
+				E44130A5E45F12216C461933 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5C6E358C10CE12832FC0259 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CFB904B8966DE2AEEB784A26 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKAppDemo/Pods-JKAppDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E44130A5E45F12216C461933 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKAppDemo/Pods-JKAppDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4FC6F2691DAC9B8700A2AF31 /* Sources */ = {
@@ -258,6 +333,7 @@
 		};
 		4FC6F2801DAC9B8700A2AF31 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0078BFCB9849EB1CC526410 /* Pods-JKAppDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8UF26TTV2Y;
@@ -272,6 +348,7 @@
 		};
 		4FC6F2811DAC9B8700A2AF31 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A2D136EDDEE1D215C43373E /* Pods-JKAppDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8UF26TTV2Y;
@@ -303,6 +380,7 @@
 				4FC6F2811DAC9B8700A2AF31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

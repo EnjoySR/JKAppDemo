@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import AsyncDisplayKit
+import SnapKit
+
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        setupUI()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func setupUI(){
+        let tableView = ASTableView()
+        self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view)
+        }
     }
 }
 
