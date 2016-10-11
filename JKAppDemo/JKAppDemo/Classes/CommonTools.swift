@@ -10,7 +10,7 @@ import Foundation
 
 
 /// 消息盒子数据
-func feedDatas() -> [JKFeedModel] {
+func getFeedDatas() -> [JKFeedModel] {
     // 获取数据
     let url = Bundle.main.url(forResource: "list.json", withExtension: nil)!
     let data = try! Data(contentsOf: url)

@@ -12,6 +12,9 @@ import SnapKit
 
 
 class ViewController: UIViewController {
+    
+    // 数据
+    lazy var feedDatas: [JKFeedModel] = getFeedDatas()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,7 @@ extension ViewController: ASTableViewDataSource, ASTableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
+        return feedDatas.count;
     }
 }
 

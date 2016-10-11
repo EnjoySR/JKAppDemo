@@ -21,24 +21,19 @@ class JKFeedModel: NSObject {
     
     var item: AnyObject?
     
-    override func setValue(_ value: Any?, forKey key: String) {
-        
-        if key == "item" {
-            let type = (value as! [String: Any])["type"] as! String
-            
-            switch type {
-            case JKFeedItemType.message.rawValue:
-                item = JKFeedMsgItemModel.yy_model(withJSON: value)
-            default:
-                break
-            }
-        }else {
-            super.setValue(value, forKey: key)
+    override func setValuesForKeys(_ keyedValues: [String : Any]) {
+        // 设置type
+        let type = keyedValues["type"] as! String
+        self.type = type
+        // 设置item
+        switch type {
+        case JKFeedItemType.message.rawValue:
+            item = JKFeedMsgItemModel.yy_model(withJSON: keyedValues["item"])
+        default:
+            break
         }
     }
-    
     override func setValue(_ value: Any?, forUndefinedKey key: String) {}
-    
 }
 
 class JKFeedMsgItemModel: NSObject {
