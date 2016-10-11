@@ -9,5 +9,6 @@ target 'JKAppDemo' do
 
 pod 'AsyncDisplayKit'
 pod 'SnapKit', '~> 3.0.2'
+pod 'YYModel'
 
 end
