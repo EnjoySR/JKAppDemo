@@ -28,7 +28,7 @@ class JKFeedModel: NSObject {
         // 设置item
         switch type {
         case JKFeedItemType.message.rawValue:
-            item = JKFeedMsgItemModel.yy_model(withJSON: keyedValues["item"])
+            item = JKFeedMsgItemModel.yy_model(withJSON: keyedValues["item"] as! [String: Any])
         default:
             break
         }
@@ -53,6 +53,8 @@ class JKFeedMsgItemModel: NSObject {
     var createdAt: Date?
     // 更新时间
     var updateAt: Date?
+    
+    var topic: JKTopicModel?
     
     var pictureUrls: [JKFeedPictureModel]?
     

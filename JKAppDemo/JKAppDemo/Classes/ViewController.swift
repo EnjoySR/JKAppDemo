@@ -22,25 +22,43 @@ class ViewController: UIViewController {
     }
     
     private func setupUI(){
-        let tableView = ASTableView()
+        
         self.view.addSubview(tableView)
         
-        tableView.asyncDelegate = self
-        tableView.asyncDataSource = self
+        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
     }
+    
+    lazy var tableView: ASTableView = {
+        let tableView = ASTableView()
+        tableView.asyncDelegate = self
+        tableView.asyncDataSource = self
+        tableView.separatorStyle = .none
+        return tableView
+    }()
 }
 
 extension ViewController: ASTableViewDataSource, ASTableViewDelegate {
     
     func tableView(_ tableView: ASTableView, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
-        return ASCellNode()
+        let cellNode = JKFeedCellNode()
+        let model = feedDatas[indexPath.row]
+        cellNode.configurModel(feedModel: model)
+        return cellNode
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedDatas.count;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let node = self.tableView.nodeForRow(at: indexPath) as! JKFeedCellNode
+        node.bgNode.backgroundColor = RGB(r: 221, g: 221, b: 221)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15) {
+            node.bgNode.backgroundColor = UIColor.white
+        }
     }
 }
 

@@ -6,8 +6,14 @@
 //  Copyright © 2016年 EnjoySR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
+let screenW = UIScreen.main.bounds.size.width
+let screenH = UIScreen.main.bounds.size.height
+
+func RGB(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1) -> UIColor {
+    return UIColor(red: r/255, green: g/255, blue: b/255, alpha: a)
+}
 
 /// 消息盒子数据
 func getFeedDatas() -> [JKFeedModel] {
