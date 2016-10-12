@@ -13,6 +13,8 @@ class JKFeedCellNode: ASCellNode {
 
     var feedModel: JKFeedModel?
     
+    lazy var pictureImageNodes: [ASNetworkImageNode] = [ASNetworkImageNode]()
+    
     /// 配置数据
     func configurModel(feedModel: JKFeedModel) {
         self.selectionStyle = .none
@@ -26,6 +28,10 @@ class JKFeedCellNode: ASCellNode {
         topicTimeNode.attributedText = NSAttributedString(string: msgItemModel?.createdAt?.description ?? "", attributes: JKTextStyle.feedTimeStyle())
         // 设置内容
         contentNode.attributedText = NSAttributedString(string: msgItemModel?.content ?? "", attributes: JKTextStyle.feedContentStyle())
+        // 收藏评论
+        favoriteNode.setAttributedTitle(NSAttributedString(string: "\(msgItemModel?.collectCount ?? 0)", attributes: JKTextStyle.feedCollectCountStyle()), for: [])
+        commentNode.setAttributedTitle(NSAttributedString(string: "\(msgItemModel?.commentCount ?? 0)", attributes: JKTextStyle.feedCollectCountStyle()), for: [])
+        
         // 添加 node
         self.addSubnode(bgNode)
         self.addSubnode(headImageNode)
@@ -33,24 +39,111 @@ class JKFeedCellNode: ASCellNode {
         self.addSubnode(topicTimeNode)
         self.addSubnode(contentNode)
         self.addSubnode(bottomNode)
+        // 根据图片张数添加 imageNode
+        if let imageUrls = msgItemModel?.pictureUrls {
+            for pictureModel in imageUrls {
+                let node = ASNetworkImageNode()
+                node.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+                node.url = URL(string: pictureModel.middlePicUrl ?? "")
+                self.addSubnode(node)
+                self.pictureImageNodes.append(node)
+            }
+        }
+        // 添加底部分割线
+        self.addSubnode(spliteNode)
+        // 添加底部工具条内部的Node
+        self.addSubnode(favoriteNode)
+        self.addSubnode(commentNode)
+        self.addSubnode(shareNode)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
+        // 顶部内容
         let nameAndTimeSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.vertical, spacing: 7, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [topicNameNode, topicTimeNode])
         
         let topicSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.horizontal, spacing: 10.0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [headImageNode, nameAndTimeSpec])
         
-        let contentSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.vertical, spacing: 18.0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [topicSpec, contentNode])
+        var contentSpecChildren: [ASLayoutable] = [topicSpec, contentLayoutSpec()]
+        if let pictureSpec = pictureLayoutSpec() {
+            contentSpecChildren.append(pictureSpec)
+        }
         
-        let topSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(20, 20, 10, 20), child: contentSpec)
+        // 添加底部分割线
+        let spliteSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(10, 0, 0, 0), child: spliteNode)
+        contentSpecChildren.append(spliteSpec)
+        // 添加底部工具条
+        contentSpecChildren.append(bottomBarLayoutSpec())
+        
+        let contentSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.vertical, spacing: 0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: contentSpecChildren)
+        let topSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(20, 20, 13, 20), child: contentSpec)
 
+        // 添加底部灰色条
         let spec = ASStackLayoutSpec(direction: ASStackLayoutDirection.vertical, spacing: 0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [topSpec, bottomNode]);
         
         return ASBackgroundLayoutSpec(child: spec, background: bgNode)
     }
     
+    func contentLayoutSpec() -> ASLayoutSpec {
+        let spec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(18, 0, 0, 0), child: contentNode);
+        return spec
+    }
+    
+    // 配图的布局
+    func pictureLayoutSpec() -> ASLayoutSpec? {
+//        if self.pictureImageNodes.count == 1 {
+//            let node = self.pictureImageNodes.first!
+//            node.preferredFrameSize = CGSize(width: screenW, height: 189)
+//            let contentSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.vertical, spacing: 0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [node])
+//            let insetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(-3, 0, 0, 0), child: contentSpec)
+//            return insetSpec
+//        }
+        return nil
+    }
+    
+    
+    /// 底部收藏评论工具条的布局
+    func bottomBarLayoutSpec() -> ASLayoutSpec {
+        let spec = ASStackLayoutSpec(direction: ASStackLayoutDirection.horizontal, spacing: 25, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [favoriteNode, commentNode, shareNode])
+        let insetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(13, 0, 0, 0), child: spec)
+        return insetSpec
+    }
+    
     // MARK: - 懒加载Node
+    //
+    lazy var shareNode: ASButtonNode = {
+        let node = ASButtonNode()
+        node.setImage(UIImage(named: "message_share_20x20_"), for: [])
+        return node
+    }()
+    
+    
+    // 评论
+    lazy var commentNode: ASButtonNode = {
+        let node = ASButtonNode()
+        node.contentHorizontalAlignment = ASHorizontalAlignment.alignmentLeft
+        node.preferredFrameSize = CGSize(width: 52, height: 20)
+        node.setImage(UIImage(named: "comment_button_20x20_"), for: [])
+        return node
+    }()
+    
+    // 是否收藏
+    lazy var favoriteNode: ASButtonNode = {
+        let node = ASButtonNode()
+        node.contentHorizontalAlignment = ASHorizontalAlignment.alignmentLeft
+        node.preferredFrameSize = CGSize(width: 52, height: 20)
+        node.setImage(UIImage(named: "like_star_border_20x20_"), for: [])
+        node.setImage(UIImage(named: "like_star_20x20_"), for: ASControlState.selected)
+        return node
+    }()
+    
+    // 分割线
+    lazy var spliteNode: ASDisplayNode = {
+        let node = ASDisplayNode()
+        node.preferredFrameSize = CGSize(width: screenW, height: 0.5)
+        node.backgroundColor = UIColor(red: 0.82, green: 0.84, blue: 0.85, alpha: 1)
+        return node
+    }()
     
     // 底部分割条
     lazy var bottomNode: ASDisplayNode = {
@@ -85,19 +178,7 @@ class JKFeedCellNode: ASCellNode {
         headImageNode.preferredFrameSize = CGSize(width: 33, height: 33)
         headImageNode.cornerRadius = 5;
         headImageNode.imageModificationBlock = { (image) -> UIImage? in
-            let modifiedImage: UIImage?
-            let rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.width)
-            // 开启上下文
-            UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
-            // 画个圆
-            UIBezierPath(roundedRect: rect, cornerRadius: 5).addClip()
-            // 将图片画到上下文中
-            image.draw(in: rect)
-            // 获取图片
-            modifiedImage = UIGraphicsGetImageFromCurrentImageContext()
-            // 结束上下文
-            UIGraphicsEndImageContext()
-            return modifiedImage
+            return image.image(cornerRadius: 5)
         }
         return headImageNode
     }()

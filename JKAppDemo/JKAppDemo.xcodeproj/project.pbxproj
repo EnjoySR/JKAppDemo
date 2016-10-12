@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		468603425011D3C043B3F2AB /* Pods_JKAppDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2E7AAD0C5D95D5CDB4D0C /* Pods_JKAppDemo.framework */; };
+		4F64D6951DADD20700E2C26D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64D6941DADD20700E2C26D /* UIImage+Extension.swift */; };
 		4FC6F2761DAC9B8700A2AF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC6F2741DAC9B8700A2AF31 /* Main.storyboard */; };
 		4FC6F2781DAC9B8700A2AF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC6F2771DAC9B8700A2AF31 /* Assets.xcassets */; };
 		4FC6F27B1DAC9B8700A2AF31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC6F2791DAC9B8700A2AF31 /* LaunchScreen.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		3A2D136EDDEE1D215C43373E /* Pods-JKAppDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKAppDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKAppDemo/Pods-JKAppDemo.release.xcconfig"; sourceTree = "<group>"; };
+		4F64D6941DADD20700E2C26D /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4FC6F26D1DAC9B8700A2AF31 /* JKAppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKAppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC6F2751DAC9B8700A2AF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FC6F2771DAC9B8700A2AF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F64D6931DADD1F600E2C26D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4F64D6941DADD20700E2C26D /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4FC6F2641DAC9B8700A2AF31 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		4FCC62DA1DAD462600B43EE3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				4F64D6931DADD1F600E2C26D /* Extension */,
 				4FCC62DB1DAD463700B43EE3 /* JKTextStyle.swift */,
 			);
 			path = Tools;
@@ -270,6 +281,7 @@
 				4FCC62D51DACFEED00B43EE3 /* JKFeedCellNode.swift in Sources */,
 				4FCC62D71DAD043900B43EE3 /* JKTopicModel.swift in Sources */,
 				4FCD0AFA1DACCCE80093DE0E /* ViewController.swift in Sources */,
+				4F64D6951DADD20700E2C26D /* UIImage+Extension.swift in Sources */,
 				4FCD0AF81DACCCE80093DE0E /* AppDelegate.swift in Sources */,
 				4FCD0AFD1DACD01C0093DE0E /* JKFeedModel.swift in Sources */,
 				4FCD0AF91DACCCE80093DE0E /* CommonTools.swift in Sources */,

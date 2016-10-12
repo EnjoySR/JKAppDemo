@@ -34,4 +34,11 @@ class JKTextStyle: NSObject {
             NSParagraphStyleAttributeName: style
         ];
     }
+    
+    class func feedCollectCountStyle() -> [String: Any] {
+        return [
+            NSFontAttributeName: UIFont.systemFont(ofSize: 12),
+            NSForegroundColorAttributeName: RGB(r: 153, g: 160, b: 167)
+        ];
+    }
 }
