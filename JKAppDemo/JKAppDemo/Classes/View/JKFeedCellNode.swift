@@ -65,12 +65,12 @@ class JKFeedCellNode: ASCellNode {
         let topicSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.horizontal, spacing: 10.0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [headImageNode, nameAndTimeSpec])
         
         var contentSpecChildren: [ASLayoutable] = [topicSpec, contentLayoutSpec()]
-        if let pictureSpec = pictureLayoutSpec() {
+        if let pictureSpec = JKFeedCellLayout.pictureLayoutSpec(pictureImageNodes: self.pictureImageNodes) {
             contentSpecChildren.append(pictureSpec)
         }
         
         // 添加底部分割线
-        let spliteSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(10, 0, 0, 0), child: spliteNode)
+        let spliteSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(20, 0, 0, 0), child: spliteNode)
         contentSpecChildren.append(spliteSpec)
         // 添加底部工具条
         contentSpecChildren.append(bottomBarLayoutSpec())
@@ -88,19 +88,6 @@ class JKFeedCellNode: ASCellNode {
         let spec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(18, 0, 0, 0), child: contentNode);
         return spec
     }
-    
-    // 配图的布局
-    func pictureLayoutSpec() -> ASLayoutSpec? {
-//        if self.pictureImageNodes.count == 1 {
-//            let node = self.pictureImageNodes.first!
-//            node.preferredFrameSize = CGSize(width: screenW, height: 189)
-//            let contentSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.vertical, spacing: 0, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: [node])
-//            let insetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(-3, 0, 0, 0), child: contentSpec)
-//            return insetSpec
-//        }
-        return nil
-    }
-    
     
     /// 底部收藏评论工具条的布局
     func bottomBarLayoutSpec() -> ASLayoutSpec {
