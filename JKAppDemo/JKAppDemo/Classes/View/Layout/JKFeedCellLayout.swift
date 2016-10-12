@@ -50,4 +50,18 @@ class JKFeedCellLayout: NSObject {
         let contentSpec = ASStackLayoutSpec(direction: ASStackLayoutDirection.horizontal, spacing: 5, justifyContent: ASStackLayoutJustifyContent.spaceBetween, alignItems: ASStackLayoutAlignItems.stretch, children: pictureImageNodes)
         return contentSpec
     }
+    
+    /// 底部收藏评论工具条的布局
+    class func bottomBarLayoutSpec(chidren: [ASLayoutable]) -> ASLayoutSpec {
+        let spec = ASStackLayoutSpec(direction: ASStackLayoutDirection.horizontal, spacing: 25, justifyContent: ASStackLayoutJustifyContent.start, alignItems: ASStackLayoutAlignItems.start, children: chidren)
+        let insetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(13, 0, 0, 0), child: spec)
+        return insetSpec
+    }
+    
+    class func videoLayoutSpec(videoNode: ASDisplayNode, videoShadowNode: ASDisplayNode, videoPlayButtonNode: ASDisplayNode) -> ASLayoutSpec {
+        let shadowSpec = ASOverlayLayoutSpec(child: videoShadowNode, overlay: videoPlayButtonNode)
+        let layoutSpec = ASOverlayLayoutSpec(child: videoNode, overlay: shadowSpec)
+        let insetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(13, 0, 0, 0), child: layoutSpec)
+        return insetSpec
+    }
 }

@@ -24,8 +24,6 @@ class ViewController: UIViewController {
     private func setupUI(){
         
         self.view.addSubview(tableView)
-        
-        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
@@ -54,11 +52,12 @@ extension ViewController: ASTableViewDataSource, ASTableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let node = self.tableView.nodeForRow(at: indexPath) as! JKFeedCellNode
-        node.bgNode.backgroundColor = RGB(r: 221, g: 221, b: 221)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15) {
-            node.bgNode.backgroundColor = UIColor.white
-        }
+//        let node = self.tableView.nodeForRow(at: indexPath) as! JKFeedCellNode
+//        node.bgNode.backgroundColor = RGB(r: 221, g: 221, b: 221)
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15) {
+//            node.bgNode.backgroundColor = UIColor.white
+//        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -53,10 +53,12 @@ class JKFeedMsgItemModel: NSObject {
     var createdAt: Date?
     // 更新时间
     var updateAt: Date?
-    
+    // 话题
     var topic: JKTopicModel?
-    
+    // 视频
     var pictureUrls: [JKFeedPictureModel]?
+    // 视频
+    var video: JKVideModel?
     
     class func modelContainerPropertyGenericClass() -> [String: Any] {
         return ["pictureUrls": JKFeedPictureModel.self]

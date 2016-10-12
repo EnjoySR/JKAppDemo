@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		468603425011D3C043B3F2AB /* Pods_JKAppDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2E7AAD0C5D95D5CDB4D0C /* Pods_JKAppDemo.framework */; };
 		4F4894671DAE7E2400A0C740 /* JKFeedCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4894661DAE7E2400A0C740 /* JKFeedCellLayout.swift */; };
+		4F4894691DAEA20700A0C740 /* JKVideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4894681DAEA20700A0C740 /* JKVideModel.swift */; };
+		4F48946B1DAEA4DE00A0C740 /* JKSoftButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48946A1DAEA4DE00A0C740 /* JKSoftButtonNode.swift */; };
 		4F64D6951DADD20700E2C26D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64D6941DADD20700E2C26D /* UIImage+Extension.swift */; };
 		4FC6F2761DAC9B8700A2AF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FC6F2741DAC9B8700A2AF31 /* Main.storyboard */; };
 		4FC6F2781DAC9B8700A2AF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC6F2771DAC9B8700A2AF31 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		3A2D136EDDEE1D215C43373E /* Pods-JKAppDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKAppDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKAppDemo/Pods-JKAppDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4F4894661DAE7E2400A0C740 /* JKFeedCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKFeedCellLayout.swift; sourceTree = "<group>"; };
+		4F4894681DAEA20700A0C740 /* JKVideModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKVideModel.swift; sourceTree = "<group>"; };
+		4F48946A1DAEA4DE00A0C740 /* JKSoftButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKSoftButtonNode.swift; sourceTree = "<group>"; };
 		4F64D6941DADD20700E2C26D /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4FC6F26D1DAC9B8700A2AF31 /* JKAppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKAppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC6F2751DAC9B8700A2AF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			children = (
 				4F4894651DAE7E1300A0C740 /* Layout */,
 				4FCC62D41DACFEED00B43EE3 /* JKFeedCellNode.swift */,
+				4F48946A1DAEA4DE00A0C740 /* JKSoftButtonNode.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 				4FCD0AFC1DACD01C0093DE0E /* JKFeedModel.swift */,
 				4FCC62D11DACF98700B43EE3 /* JKFeedPictureModel.swift */,
 				4FCC62D61DAD043900B43EE3 /* JKTopicModel.swift */,
+				4F4894681DAEA20700A0C740 /* JKVideModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,12 +297,14 @@
 			files = (
 				4F4894671DAE7E2400A0C740 /* JKFeedCellLayout.swift in Sources */,
 				4FCC62D51DACFEED00B43EE3 /* JKFeedCellNode.swift in Sources */,
+				4F48946B1DAEA4DE00A0C740 /* JKSoftButtonNode.swift in Sources */,
 				4FCC62D71DAD043900B43EE3 /* JKTopicModel.swift in Sources */,
 				4FCD0AFA1DACCCE80093DE0E /* ViewController.swift in Sources */,
 				4F64D6951DADD20700E2C26D /* UIImage+Extension.swift in Sources */,
 				4FCD0AF81DACCCE80093DE0E /* AppDelegate.swift in Sources */,
 				4FCD0AFD1DACD01C0093DE0E /* JKFeedModel.swift in Sources */,
 				4FCD0AF91DACCCE80093DE0E /* CommonTools.swift in Sources */,
+				4F4894691DAEA20700A0C740 /* JKVideModel.swift in Sources */,
 				4FCC62D21DACF98700B43EE3 /* JKFeedPictureModel.swift in Sources */,
 				4FCC62DC1DAD463700B43EE3 /* JKTextStyle.swift in Sources */,
 			);
