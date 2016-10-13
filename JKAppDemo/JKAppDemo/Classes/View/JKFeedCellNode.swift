@@ -111,7 +111,7 @@ class JKFeedCellNode: ASCellNode {
     // MARK: - 监听方法
     
     @objc private func playVideo() {
-        CRToastManager.showNotification(withMessage: "没有做~", completionBlock: nil)
+//        CRToastManager.showNotification(withMessage: "没有做~", completionBlock: nil)
     }
     
     // MARK: - 高亮效果
