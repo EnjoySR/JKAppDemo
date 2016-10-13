@@ -8,6 +8,7 @@
 
 import UIKit
 import AsyncDisplayKit
+import CRToast
 
 class JKFeedCellNode: ASCellNode {
 
@@ -110,10 +111,11 @@ class JKFeedCellNode: ASCellNode {
     // MARK: - 监听方法
     
     @objc private func playVideo() {
-        print("点击效果")
+        CRToastManager.showNotification(withMessage: "没有做~", completionBlock: nil)
     }
     
     // MARK: - 高亮效果
+    
     override func __setHighlighted(fromUIKit highlighted: Bool) {
         bgNode.backgroundColor = highlighted ? RGB(r: 221, g: 221, b: 221) : UIColor.white
     }

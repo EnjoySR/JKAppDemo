@@ -9,6 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 import SnapKit
+import CRToast
 
 
 class ViewController: UIViewController {
@@ -52,12 +53,14 @@ extension ViewController: ASTableViewDataSource, ASTableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let node = self.tableView.nodeForRow(at: indexPath) as! JKFeedCellNode
-//        node.bgNode.backgroundColor = RGB(r: 221, g: 221, b: 221)
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15) {
-//            node.bgNode.backgroundColor = UIColor.white
-//        }
         tableView.deselectRow(at: indexPath, animated: true)
+        CRToastManager.showNotification(withMessage: "消息抖动是因为没有附带的外链", completionBlock: nil)
+        let anim = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        anim.values = [0, -3, 0, 3, 0]
+        anim.repeatCount = 2
+        anim.duration = 0.15
+        let node = self.tableView.nodeForRow(at: indexPath)
+        node.layer.add(anim, forKey: nil)
     }
 }
 
