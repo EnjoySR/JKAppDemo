@@ -11,5 +11,6 @@ pod 'AsyncDisplayKit'
 pod 'SnapKit', '~> 3.0.2'
 pod 'YYModel'
 pod 'CRToast'
+pod 'ESPictureBrowser'
 
 end

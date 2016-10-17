@@ -22,6 +22,7 @@
 #import "PINRemoteImageTask.h"
 #import "PINRemoteLock.h"
 #import "PINURLSessionManager.h"
+#import "FLAnimatedImageView+PINRemoteImage.h"
 
 FOUNDATION_EXPORT double PINRemoteImageVersionNumber;
 FOUNDATION_EXPORT const unsigned char PINRemoteImageVersionString[];

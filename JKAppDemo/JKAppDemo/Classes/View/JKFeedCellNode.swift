@@ -9,6 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 import CRToast
+import ESPictureBrowser
 
 class JKFeedCellNode: ASCellNode {
 
@@ -47,6 +48,7 @@ class JKFeedCellNode: ASCellNode {
                 let node = ASNetworkImageNode()
                 node.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
                 node.url = URL(string: pictureModel.middlePicUrl ?? "")
+                node.addTarget(self, action: #selector(showPhotoBrowser(imageNode:)), forControlEvents: ASControlNodeEvent.touchUpInside)
                 self.addSubnode(node)
                 self.pictureImageNodes.append(node)
             }
@@ -64,7 +66,14 @@ class JKFeedCellNode: ASCellNode {
         self.addSubnode(spliteNode)
         self.addSubnode(bottomNode)
     }
+    // MARK: - 监听方法
+    @objc private func showPhotoBrowser(imageNode: ASNetworkImageNode) {
+        let photoBrowser = ESPictureBrowser()
+        photoBrowser.delegate = self
+        photoBrowser.showForm(imageNode.view, picturesCount: UInt(self.pictureImageNodes.count), currentPictureIndex: UInt(pictureImageNodes.index(of: imageNode) ?? 0))
+    }
     
+    // MARK: - 布局
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
@@ -111,7 +120,7 @@ class JKFeedCellNode: ASCellNode {
     // MARK: - 监听方法
     
     @objc private func playVideo() {
-//        CRToastManager.showNotification(withMessage: "没有做~", completionBlock: nil)
+        CRToastManager.showNotification(withMessage: "没有做~", completionBlock: nil)
     }
     
     // MARK: - 高亮效果
@@ -224,6 +233,31 @@ class JKFeedCellNode: ASCellNode {
         node.backgroundColor = UIColor.white
         return node
     }()
+}
+
+extension JKFeedCellNode: ESPictureBrowserDelegate {
+    
+    func pictureView(_ pictureBrowser: ESPictureBrowser!, imageSizeFor index: Int) -> CGSize {
+        if let msgItemModel = feedModel?.item as? JKFeedMsgItemModel,
+            let pictureModel = msgItemModel.pictureUrls?[index]
+        {
+            return CGSize(width: pictureModel.width, height: pictureModel.height)
+        }
+        return CGSize.zero
+    }
+    
+    func pictureView(_ pictureBrowser: ESPictureBrowser!, viewFor index: Int) -> UIView! {
+        return self.pictureImageNodes[index].view
+    }
+    
+    func pictureView(_ pictureBrowser: ESPictureBrowser!, defaultImageFor index: Int) -> UIImage! {
+        return self.pictureImageNodes[index].image
+    }
+
+    func pictureView(_ pictureBrowser: ESPictureBrowser!, highQualityUrlStringFor index: Int) -> String! {
+        let pictureModel = (feedModel?.item as? JKFeedMsgItemModel)?.pictureUrls?[index]
+        return pictureModel?.picUrl
+    }
 }
 
 
